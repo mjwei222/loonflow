@@ -57,6 +57,7 @@ class TicketListView(View):
             return api_response(-1, 'post参数为空', {})
         request_data_dict = json.loads(json_str)
         app_name = request.META.get('HTTP_APPNAME')
+        request_data_dict['username'] = request.META.get('HTTP_USERNAME')
 
         from service.account.account_base_service import AccountBaseService
         # 判断是否有创建某工单的权限
